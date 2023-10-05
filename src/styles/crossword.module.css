@@ -1,9 +1,9 @@
 .square {
-  background: #fff;
+  background: #D3D3D3;
   border: 1px solid;
   float: left;
   font-size: 24px;
-  font-weight: bold;
+  /* font-weight: bold; */
   line-height: 34px;
   height: 28px;
   margin-right: -1px;
@@ -12,7 +12,7 @@
   text-align: center;
   width: 28px;
   text-transform: capitalize;
-  
+  color: white;
 }
 
 .number {
@@ -20,6 +20,7 @@
   bottom: 4px; 
   left: 2px;
   font-size: .7em;
+  color: white;
 }
 
 .div
@@ -29,7 +30,7 @@
 }
 
 .clue{
-  border: 1px solid rgb(0, 0, 0);
+  border: 1px solid rgb(211, 211, 211);
   float: left;
   font-size: 24px;
   text-align: center;
@@ -39,13 +40,15 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  background-color: white;
 }
 
 .modal_container {
   position: fixed;
   z-index: 2;
   text-align: center;
-  background-color: #f6daf7;
+  /* background-color: #f6daf7;
+  background-color: #ffc7c7; */
   background-color: #ffc7c7;
   width: 50%;
   height: fit-content;

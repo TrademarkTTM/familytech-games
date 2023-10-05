@@ -72,7 +72,8 @@ function Square(props) {
                     readOnly={key_character === "*" || key_character === "&"}
                     style={
                         key_character == "*"
-                            ? { backgroundColor: "black", borderColor: "black" }
+                            // ? { backgroundColor: "#ADD8E6", borderColor: "#ADD8E6" }
+                            ? { backgroundColor: "white", borderColor: "white" }
                             : key_character == "&"
                             ? {
                                   backgroundColor: "white",
@@ -80,7 +81,7 @@ function Square(props) {
                                   width: 0,
                                   border: 0,
                               }
-                            : { backgroundColor: "white", borderColor: "black" }
+                            : { backgroundColor: "#1842b3", borderColor: "white" }
                     }
                     maxLength={1}
                     type="text"
