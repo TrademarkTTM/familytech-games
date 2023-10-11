@@ -1,5 +1,6 @@
 import Clue from "./clue";
 import { useEffect, useState } from "react";
+import moment from "moment";
 
 function ClueList(props) {
     let { verticalClues, horizontalClues, result } = props;
@@ -7,6 +8,34 @@ function ClueList(props) {
         VERTICAL: verticalClues,
         HORIZONTAL: horizontalClues,
     });
+    const [timerValue, setTimerValue] = useState(1 * 60); // 10 minutes in seconds
+
+    useEffect(() => {
+        function startTimer() {
+            const timerInterval = setInterval(() => {
+                setTimerValue((prevTimerValue) => {
+                    if (prevTimerValue <= 0) {
+                        clearInterval(timerInterval);
+                        window.alert("Time's up!"); // Display an alert when the timer is up
+                        return 0;
+                    } else {
+                        return prevTimerValue - 1;
+                    }
+                });
+            }, 1000);
+            return () => clearInterval(timerInterval); // Clean up the timer interval when the component unmounts
+        }
+
+        startTimer(); // Start the timer when the component mounts
+    }, []);
+
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = seconds % 60;
+        const formattedSeconds = remainingSeconds.toString().padStart(2, "0");
+        return `${minutes}:${formattedSeconds}`;
+    }
+
     useEffect(() => {
         setClueList(makeClueList());
     }, []);
@@ -44,6 +73,11 @@ function ClueList(props) {
     return (
         <>
             <div>
+                <div id="timer">
+                    {timerValue > 0
+                        ? `Time remaining: ${formatTime(timerValue)}`
+                        : "Time's up!"}
+                </div>
                 <h1>Clues</h1>
                 <h2>Down</h2>
                 {clueList.VERTICAL.map((clues) => {

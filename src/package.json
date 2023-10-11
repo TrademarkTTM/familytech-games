@@ -17,6 +17,7 @@
     "@mui/material": "^5.7.0",
     "axios": "^0.27.2",
     "cors": "^2.8.5",
+    "moment": "^2.29.4",
     "next": "12.1.5",
     "next-connect": "^0.12.2",
     "next-pwa": "^5.5.4",
