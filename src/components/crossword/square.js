@@ -14,18 +14,7 @@ function Square(props) {
     } = props;
 
     function handleChange(event) {
-        if (event.button === 0) {
-            const clickInput = event.target;
-            const clickNewValue = event.target.value;
-
-            clickInput.setSelectionRange(
-                clickNewValue.length,
-                clickNewValue.length
-            );
-
-            console.log(clickInput);
-            console.log(clickNewValue);
-        } else {
+        {
             const input = event.target;
             const newValue = event.target.value;
             // Check if the new value has an asterisk and remove it
@@ -34,6 +23,13 @@ function Square(props) {
             if (updatedValue.length > 0) {
                 input.value = "";
             }
+
+            if (key_character == newValue.toUpperCase()) {
+                input.style.backgroundColor = "green";
+            } else {
+                input.style.backgroundColor = "#1842b3";
+            }
+
             // Append the new character to the input value
             const finalValue = input.value + updatedValue;
             // Update the input value
@@ -72,8 +68,8 @@ function Square(props) {
                     readOnly={key_character === "*" || key_character === "&"}
                     style={
                         key_character == "*"
-                            // ? { backgroundColor: "#ADD8E6", borderColor: "#ADD8E6" }
-                            ? { backgroundColor: "white", borderColor: "white" }
+                            ? // ? { backgroundColor: "#ADD8E6", borderColor: "#ADD8E6" }
+                              { backgroundColor: "white", borderColor: "white" }
                             : key_character == "&"
                             ? {
                                   backgroundColor: "white",
@@ -81,7 +77,12 @@ function Square(props) {
                                   width: 0,
                                   border: 0,
                               }
-                            : { backgroundColor: "#1842b3", borderColor: "white" }
+                            : // : clueNumber === count // Check if clueNumber is equal to selectedClue
+                              // ? { backgroundColor: "green", borderColor: "white" } // Set the style if true
+                              {
+                                  backgroundColor: "#1842b3",
+                                  borderColor: "white",
+                              } // Default style
                     }
                     maxLength={1}
                     type="text"
